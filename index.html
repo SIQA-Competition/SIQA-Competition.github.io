@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SFE Challenge 2025</title>
-  <meta name="description" content="The Science for Everyone (SFE) Challenge invites students and researchers to solve real-world scientific problems using open data and AI." />
+  <title>Scientific Image Quality Assessment Challenge – IMCE GC 2026</title>
+  <meta name="description" content="The SIQA Challenge invites researchers to develop AI systems capable of understanding and evaluating the scientific integrity of visual data." />
   <style>
     /* ===== 基础重置与全局样式 ===== */
     * {
@@ -59,13 +59,15 @@
       background: #eef5ff;
     }
     main {
-      max-width: 900px;
+      width: min(90%, 1200px); /* 更宽，但不超过 1200px，且在小屏留边距 */
       margin: 2rem auto;
       padding: 0 1.5rem;
     }
+
     section {
       margin-bottom: 3rem;
     }
+
     h2 {
       font-size: 2rem;
       color: #1e5799;
@@ -73,38 +75,59 @@
       border-bottom: 2px solid #eee;
       padding-bottom: 0.5rem;
     }
+
     p {
       margin-bottom: 1rem;
+      line-height: 1.6; /* 提升可读性 */
     }
+
     .timeline {
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
     }
+    .timeline a {
+      color: #207cca;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .timeline a:hover {
+      color: #1e5799;
+    }
     .timeline-item {
       display: flex;
       gap: 1rem;
     }
+
     .timeline-date {
       min-width: 120px;
       font-weight: bold;
       color: #207cca;
     }
+
     .tracks-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 卡片最小 300px，更宽敞 */
+      gap: 1.8rem; /* 稍微加大间距，呼吸感更强 */
     }
+
     .track-card {
       background: white;
       border: 1px solid #ddd;
       border-radius: 8px;
-      padding: 1.2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 1.4rem; /* 稍微增加内边距 */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s ease;
     }
+
+    .track-card:hover {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
     .track-card h3 {
       color: #1e5799;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.25rem;
     }
     .organizers {
       display: flex;
@@ -114,19 +137,26 @@
     }
     .org-item {
       text-align: center;
-      max-width: 150px;
+      max-width: 160px;
     }
     .org-logo {
-      width: 100px;
-      height: 100px;
-      background: #eee;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 0.8rem;
-      font-weight: bold;
+      overflow: hidden;
+      background: #eee;
       color: #555;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .org-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     footer {
       text-align: center;
@@ -139,126 +169,219 @@
       header h1 { font-size: 2rem; }
       nav ul { flex-direction: column; align-items: center; }
       nav a { margin: 0.2rem 0; }
+      .organizers { gap: 1rem; }
+      .org-item { max-width: 130px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Science for Everyone (SFE) Challenge 2025</h1>
-    <p>Open Science · Open Data · Global Collaboration</p>
+    <h1>Scientific Image Quality Assessment Challenge (SIQA)</h1>
+    <p>IMCE GC 2026 · Advancing AI’s Ability to Evaluate Scientific Integrity in Visual Data</p>
   </header>
 
-  <nav id="navbar">
-    <ul>
-      <li><a href="#introduction">Introduction</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#tracks">Competition Tracks</a></li>
-      <li><a href="#organizers">Organizers</a></li>
+<nav id="navbar" style="background: #fff; border-bottom: 1px solid #e0e0e0; padding: 0.8rem 1.5rem; display: flex; justify-content: center; align-items: center; width: 100%; box-sizing: border-box;">
+  <div style="display: flex; align-items: center; gap: 1rem; max-width: 1200px; width: 100%;">
+    <!-- Logo and Brand -->
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+<!--      <img src="./imgs/sciprismax_logo.png" alt="SciPrismaX" style="height: 24px; width: auto;">-->
+      <span style="font-weight: 600; font-size: 1.1rem;">SIQA Challenge</span>
+      <span style="color: #999; font-size: 0.9rem;">by</span>
+      <img src="./imgs/aibench.png" alt="AIBENCH" style="height: 24px; width: auto;">
+    </div>
+
+    <!-- Navigation Links -->
+    <ul style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+      <li><a href="#introduction" style="text-decoration: none; color: #333; font-weight: 500;">Introduction</a></li>
+      <li><a href="#tracks" style="text-decoration: none; color: #333; font-weight: 500;">Tracks</a></li>
+      <li><a href="#timeline" style="text-decoration: none; color: #333; font-weight: 500;">Timeline</a></li>
+      <li><a href="#organizers" style="text-decoration: none; color: #333; font-weight: 500;">Organizers</a></li>
+      <li><a href="#advisory" style="text-decoration: none; color: #333; font-weight: 500;">Advisory Committee</a></li>
     </ul>
-  </nav>
+  </div>
+</nav>
 
   <main>
     <!-- Introduction -->
     <section id="introduction">
       <h2>Introduction</h2>
       <p>
-        The <strong>Science for Everyone (SFE) Challenge 2025</strong> is a global competition that empowers students, researchers, and citizen scientists to tackle pressing scientific questions using open datasets and modern computational tools.
+        Multimodal large language models (MLLMs) are revolutionizing image quality assessment (IQA) by bringing semantic understanding and world knowledge into evaluation. Yet nearly all existing IQA benchmarks ignore scientific imagery, a cornerstone of research, education, and discovery.
       </p>
       <p>
-        This year’s theme focuses on <em>“Democratizing Scientific Discovery through Open Data and AI”</em>. Participants will work on real-world problems in climate science, biomedical research, and sustainable development — all using publicly available data.
+        Unlike general photos, where quality is judged by blur or noise, scientific images must also be <em>correct</em>, <em>complete</em>, <em>clear</em>, and <em>conventional</em>. A high-quality scientific visualization must:
+        accurately reflect scientific facts (<strong>Validity</strong>);
+        include all necessary labels, scales, and context (<strong>Completeness</strong>);
+        be instantly interpretable by experts (<strong>Clarity</strong>); and
+        follow field-specific norms in style and notation (<strong>Conformity</strong>).
       </p>
       <p>
-        Join thousands of innovators worldwide to build solutions that are reproducible, transparent, and impactful.
+        To address this gap, the <strong>SIQA Challenge</strong> introduces two tasks that push models beyond pixels—to evaluate scientific integrity through visual reasoning and domain-aware judgment.
       </p>
+             <img src="./imgs/Introduction.png" alt="Task Example" style="display: block; margin: 1.5rem auto; width: 50%; height: auto; border-radius: 6px;">
+    </section>
+
+    <!-- Challenge Tasks -->
+    <section id="tracks">
+      <h2>Challenge Tasks</h2>
+
+      <div class="tracks-grid">
+        <!-- Task 1: SIQA Understanding -->
+        <div class="track-card">
+          <h3>🔍 SIQA Understanding (SIQA-U)</h3>
+          <p>
+            Evaluates a model’s ability to reason about scientific image quality through structured visual question answering aligned with the four SIQA dimensions.
+          </p>
+          <p><strong>Question Types:</strong></p>
+          <ul style="padding-left: 1.2rem; margin: 0.5rem 0;">
+            <li><strong>Yes/No:</strong> Binary verification of factual, structural, or representational conditions.</li>
+            <li><strong>What:</strong> Multiple-choice comprehension of scientific entities, relationships, or context.</li>
+            <li><strong>How:</strong> Quality judgment on completeness, clarity, and disciplinary conventions.</li>
+          </ul>
+          <p><em>Measures factual verification, semantic understanding, and scientific reasoning.</em></p>
+          <p><strong>Evaluation:</strong> Weighted accuracy:<br>
+            Score₁ = 0.2 × ACC<sub>yes/no</sub> + 0.3 × ACC<sub>what</sub> + 0.5 × ACC<sub>how</sub>
+          </p>
+        </div>
+
+        <!-- Task 2: SIQA Scoring -->
+        <div class="track-card">
+          <h3>📈 SIQA Scoring (SIQA-S)</h3>
+          <p>
+            Predicts continuous quality scores along two complementary dimensions:
+          </p>
+          <ul style="padding-left: 1.2rem; margin: 0.5rem 0;">
+            <li><strong>Factual Correctness (objective):</strong> Alignment with ground-truth science (validity + completeness).</li>
+            <li><strong>Perceptual Quality (subjective):</strong> Human-expert judgments on clarity and discipline-specific usability (clarity + conformity).</li>
+          </ul>
+          <p><em>Models predict scores directly from images—no text input required.</em></p>
+          <p><strong>Evaluation:</strong> For each dimension <em>d</em> ∈ {Factual, Perceptual}:<br>
+            Score<sup>(d)</sup> = max( (SRCC<sup>(d)</sup> + PLCC<sup>(d)</sup>) / 2 , 0 ) × 100<br>
+            Final Score₂ = (Score<sup>Factual</sup> + Score<sup>Perceptual</sup>) / 2
+          </p>
+        </div>
+      </div>
+             <img src="./imgs/Task.png" alt="Task Example" style="display: block; margin: 1.5rem auto; width: 80%; height: auto; border-radius: 6px;">
     </section>
 
     <!-- Timeline -->
-    <section id="timeline">
-      <h2>Timeline</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">January 15, 2025</div>
-          <div>Competition launch & dataset release</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">March 1, 2025</div>
-          <div>Deadline for team registration</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">April 15, 2025</div>
-          <div>Submission deadline</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">May 10, 2025</div>
-          <div>Finalists announced</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">June 5, 2025</div>
-          <div>Awards ceremony at Open Science Summit</div>
-        </div>
+<section id="timeline">
+  <h2>Timeline</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">February 7, 2026</div>
+      <div>
+        Registration opens at, and delever confirm mail at ; Training dataset released at
+        <a href="https://example.com/train-data" target="_blank" rel="noopener"> https://</a>
       </div>
-    </section>
-
-    <!-- Competition Tracks -->
-    <section id="tracks">
-      <h2>Competition Tracks</h2>
-      <div class="tracks-grid">
-        <div class="track-card">
-          <h3>🌍 Climate Insights</h3>
-          <p>Analyze satellite and ground-based climate data to predict regional drought risks or carbon sequestration potential.</p>
-        </div>
-        <div class="track-card">
-          <h3>🧬 Biomedical Discovery</h3>
-          <p>Use open genomic and clinical datasets to identify biomarkers for early disease detection.</p>
-        </div>
-        <div class="track-card">
-          <h3>🏙️ Urban Sustainability</h3>
-          <p>Leverage city-level open data to optimize energy use, waste management, or public transport efficiency.</p>
-        </div>
-        <div class="track-card">
-          <h3>🔬 Open Methodology</h3>
-          <p>Develop novel, reproducible workflows for scientific analysis using Jupyter, R Markdown, or Quarto.</p>
-        </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">March 10, 2026</div>
+      <div>
+      Validation dataset released
+        <a href="https://example.com/val-data" target="_blank" rel="noopener"> https://</a>
       </div>
-    </section>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">April 1, 2026</div>
+      <div>
+          Registration deadline
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">April 25, 2026</div>
+      <div>
+          Code &amp; model submission deadline, submission your code at
+          <a href="https://example.com/submit-code" target="_blank" rel="noopener">https://</a>;
+          Internal evaluation begins
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">May 4, 2026</div>
+      <div>
+          Paper submission deadline at <a href="https://example.com/submit-paper" target="_blank" rel="noopener">https://</a>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">May 15, 2026</div>
+      <div>
+        Final results announced (to be posted on
+        <a href="https://example.com/results" target="_blank" rel="noopener">results page</a>)
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Organizers -->
     <section id="organizers">
       <h2>Organizers</h2>
       <div class="organizers">
         <div class="org-item">
-          <div class="org-logo">IS</div>
-          <div>InternScience Foundation</div>
+          <img src="./imgs/liwenzhe.png" alt="Li Wenzhe" class="org-logo">
+          <div>
+            <strong>Li Wenzhe</strong><br>
+            Shanghai AI Lab
+          </div>
         </div>
         <div class="org-item">
-          <div class="org-logo">OS</div>
-          <div>Open Science Alliance</div>
-        </div>
-        <div class="org-item">
-          <div class="org-logo">UN</div>
-          <div>UN Sustainable Dev. Network</div>
-        </div>
-        <div class="org-item">
-          <div class="org-logo">HF</div>
-          <div>Hugging Face Research</div>
+          <img src="./imgs/chenliang.png" alt="Chen Liang" class="org-logo">
+          <div>
+            <strong>Chen Liang</strong><br>
+            Shanghai AI Lab
+          </div>
         </div>
       </div>
       <p style="text-align: center; margin-top: 1.5rem;">
         In partnership with universities and open-data initiatives worldwide.
       </p>
     </section>
+
+    <!-- Advisory Committee (same style as Organizers) -->
+    <section id="advisory">
+      <h2>Advisory Committee</h2>
+      <div class="organizers">
+        <div class="org-item">
+          <img src="./imgs/prof_zhang.jpg" alt="Prof. Yiming Zhang" class="org-logo">
+          <div>
+            <strong>Prof. Yiming Zhang</strong><br>
+            Tsinghua University
+          </div>
+        </div>
+        <div class="org-item">
+          <img src="./imgs/prof_liu.jpg" alt="Prof. Xiaodong Liu" class="org-logo">
+          <div>
+            <strong>Prof. Xiaodong Liu</strong><br>
+            Peking University
+          </div>
+        </div>
+        <div class="org-item">
+          <img src="./imgs/dr_wang.jpg" alt="Dr. Jing Wang" class="org-logo">
+          <div>
+            <strong>Dr. Jing Wang</strong><br>
+            MIT CSAIL
+          </div>
+        </div>
+        <div class="org-item">
+          <img src="./logos/nsfc_logo.png" alt="NSFC Representative" class="org-logo">
+          <div>
+            <strong>NSFC</strong><br>
+            National Natural Science Foundation of China
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>© 2025 Science for Everyone Challenge. All rights reserved.</p>
+    <p>© 2026 SCI-QBench Challenge. All rights reserved.</p>
     <p>
-      Questions? Contact us at <a href="mailto:challenge@internscience.org">challenge@internscience.org</a>
+      Questions? Contact us at <a href="mailto:liwenzhe@pjlab.org.cn">liwenzhe@pjlab.org.cn</a>
     </p>
   </footer>
 
   <script>
-    // 简单的导航高亮（可选）
+    // 导航高亮逻辑
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
@@ -266,11 +389,12 @@
       });
     });
 
-    // 页面加载时根据 URL hash 高亮
     window.addEventListener('load', () => {
       const hash = window.location.hash;
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
       if (hash) {
-        document.querySelector(`nav a[href="${hash}"]`)?.classList.add('active');
+        const activeLink = document.querySelector(`nav a[href="${hash}"]`);
+        if (activeLink) activeLink.classList.add('active');
       } else {
         document.querySelector('nav a')?.classList.add('active');
       }
