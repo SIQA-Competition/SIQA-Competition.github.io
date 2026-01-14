@@ -140,23 +140,24 @@
       max-width: 160px;
     }
     .org-logo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+      width: 100px;           /* 可根据需要调整大小 */
+      height: 100px;          /* 此处设为正方形，用于圆形头像 */
+      border-radius: 50%;     /* 圆形 */
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 0.8rem;
       overflow: hidden;
-      background: #eee;
-      color: #555;
-      font-weight: bold;
-      font-size: 1.1rem;
+      background: #fff;
+      border: 1px solid #e0e0e0; /* 轻微边框，模拟证件照边框 */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* 轻微阴影，提升立体感 */
     }
+
     .org-logo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover;      /* 关键：保证图片按比例缩放并填满容器，裁剪多余部分 */
+      object-position: center; /* 确保居中显示 */
     }
     footer {
       text-align: center;
@@ -273,14 +274,14 @@
       <div class="timeline-date">February 7, 2026</div>
       <div>
         Registration opens at, and delever confirm mail at ; Training dataset released at
-        <a href="https://example.com/train-data" target="_blank" rel="noopener"> https://</a>
+        <a href="https://example.com/train-data" target="_blank" rel="noopener"> huggingface</a>
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-date">March 10, 2026</div>
       <div>
       Validation dataset released
-        <a href="https://example.com/val-data" target="_blank" rel="noopener"> https://</a>
+        <a href="https://example.com/val-data" target="_blank" rel="noopener"> huggingface</a>
       </div>
     </div>
     <div class="timeline-item">
@@ -293,14 +294,14 @@
       <div class="timeline-date">April 25, 2026</div>
       <div>
           Code &amp; model submission deadline, submission your code at
-          <a href="https://example.com/submit-code" target="_blank" rel="noopener">https://</a>;
+          <a href="https://example.com/submit-code" target="_blank" rel="noopener">github.com//</a>;
           Internal evaluation begins
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-date">May 4, 2026</div>
       <div>
-          Paper submission deadline at <a href="https://example.com/submit-paper" target="_blank" rel="noopener">https://</a>
+          Paper submission deadline at <a href="https://example.com/submit-paper" target="_blank" rel="noopener">official mail//</a>
       </div>
     </div>
     <div class="timeline-item">
@@ -318,17 +319,45 @@
       <h2>Organizers</h2>
       <div class="organizers">
         <div class="org-item">
-          <img src="./imgs/liwenzhe.png" alt="Li Wenzhe" class="org-logo">
+          <img src="team/liwenzhe.png" alt="Li Wenzhe" class="org-logo">
           <div>
             <strong>Li Wenzhe</strong><br>
-            Shanghai AI Lab
+            Shanghai Artificial Intelligence Laboratory
           </div>
         </div>
         <div class="org-item">
-          <img src="./imgs/chenliang.png" alt="Chen Liang" class="org-logo">
+          <img src="team/chenliang.jpg" alt="Chen Liang" class="org-logo">
           <div>
             <strong>Chen Liang</strong><br>
-            Shanghai AI Lab
+            Shanghai Artificial Intelligence Laboratory
+          </div>
+        </div>
+        <div class="org-item">
+          <img src="team/wangjunying.jpg" alt="Wang Junying" class="org-logo">
+          <div>
+            <strong>Wang Junying</strong><br>
+            Shanghai Artificial Intelligence Laboratory
+          </div>
+        </div>
+        <div class="org-item">
+          <img src="team/wenfarong.jpg" alt="Wen Farong" class="org-logo">
+          <div>
+            <strong>Wen Farong</strong><br>
+            Shanghai Artificial Intelligence Laboratory
+          </div>
+        </div>
+        <div class="org-item">
+          <img src="team/guoyijing.jpg" alt="Guo Yijing" class="org-logo">
+          <div>
+            <strong>Guo Yijing</strong><br>
+            Shanghai Artificial Intelligence Laboratory
+          </div>
+        </div>
+        <div class="org-item">
+          <img src="team/shengye.jpg" alt="Sheng Ye" class="org-logo">
+          <div>
+            <strong>Sheng Ye</strong><br>
+            Shanghai Artificial Intelligence Laboratory
           </div>
         </div>
       </div>
@@ -342,34 +371,50 @@
       <h2>Advisory Committee</h2>
       <div class="organizers">
         <div class="org-item">
-          <img src="./imgs/prof_zhang.jpg" alt="Prof. Yiming Zhang" class="org-logo">
+          <img src="team/zhangzicheng.jpg" alt="Zicheng Zhang" class="org-logo">
           <div>
-            <strong>Prof. Yiming Zhang</strong><br>
-            Tsinghua University
+            <strong>Zicheng Zhang*</strong><br>
+            Shanghai Artificial Intelligence Laboratory
           </div>
         </div>
         <div class="org-item">
-          <img src="./imgs/prof_liu.jpg" alt="Prof. Xiaodong Liu" class="org-logo">
+          <img src="team/lichunyi.jpg" alt="Chunyi Li" class="org-logo">
           <div>
-            <strong>Prof. Xiaodong Liu</strong><br>
-            Peking University
+            <strong>Chunyi Li</strong><br>
+            Shanghai Artificial Intelligence Laboratory
           </div>
         </div>
         <div class="org-item">
-          <img src="./imgs/dr_wang.jpg" alt="Dr. Jing Wang" class="org-logo">
+          <img src="team/zhangwenlong.jpg" alt="Wenlong Zhang" class="org-logo">
           <div>
-            <strong>Dr. Jing Wang</strong><br>
-            MIT CSAIL
+            <strong>Wenlong Zhang</strong><br>
+            Shanghai Artificial Intelligence Laboratory
           </div>
         </div>
         <div class="org-item">
-          <img src="./logos/nsfc_logo.png" alt="NSFC Representative" class="org-logo">
+          <img src="team/liuxiaohong.jpg" alt="Xiaohong Liu" class="org-logo">
           <div>
-            <strong>NSFC</strong><br>
-            National Natural Science Foundation of China
+            <strong>Xiaohong Liu</strong><br>
+              Shanghai Jiao Tong University
+          </div>
+        </div>
+        <div class="org-item">
+          <img src="team/minxiongkuo.jpg" alt="Xiongkuo Min" class="org-logo">
+          <div>
+            <strong>Xiaohong Liu</strong><br>
+              Shanghai Jiao Tong University
+          </div>
+        </div>
+        <div class="org-item">
+          <img src="team/zhaiguangtao.png" alt="Guangtao Zhai" class="org-logo">
+          <div>
+            <strong>Xiaohong Liu</strong><br>
+              Shanghai Artificial Intelligence Laboratory
           </div>
         </div>
       </div>
+    <p>
+    <\p>
     </section>
   </main>
 
