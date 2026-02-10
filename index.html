@@ -199,7 +199,6 @@
       <li><a href="#tracks" style="text-decoration: none; color: #333; font-weight: 500;">Tracks</a></li>
       <li><a href="#timeline" style="text-decoration: none; color: #333; font-weight: 500;">Timeline</a></li>
       <li><a href="#organizers" style="text-decoration: none; color: #333; font-weight: 500;">Organizers</a></li>
-      <li><a href="#datavisual" style="text-decoration: none; color: #333; font-weight: 500;">DataSet</a></li>
       <li><a href="#advisory" style="text-decoration: none; color: #333; font-weight: 500;">Advisory Committee</a></li>
     </ul>
   </div>
@@ -220,62 +219,83 @@
         follow field-specific norms in style and notation (<strong>Conformity</strong>).
       </p>
       <p>
-        To address this gap, the <strong>SIQA Challenge</strong> introduces two tasks that push models beyond pixels—to evaluate scientific integrity through visual reasoning and domain-aware judgment.
+        To address this gap, the <strong>SIQA Challenge</strong> introduces two tracks (SIQA-U & SIQA-S) that push models beyond pixels—to evaluate scientific integrity through visual reasoning and domain-aware judgment.
       </p>
              <img src="./imgs/Introduction.svg" alt="Task Example" style="display: block; margin: 1.5rem auto; width: 50%; height: auto; border-radius: 6px;">
     </section>
 
-    <!-- Challenge Tasks -->
+<!-- Challenge Tracks -->
 <section id="tracks">
-      <h2>Challenge Tasks</h2>
+  <h2>Challenge Tracks</h2>
 
-      <div class="tracks-grid">
-        <!-- Task 1: SIQA Understanding -->
-        <div class="track-card">
-          <h3>🔍 SIQA Understanding (SIQA-U)</h3>
-          <p>
-            Evaluates a model’s ability to reason about scientific image quality through structured visual question answering aligned with the four SIQA dimensions.
-          </p>
-          <p><strong>Question Types:</strong></p>
-          <ul style="padding-left: 1.2rem; margin: 0.5rem 0;">
-            <li><strong>Yes/No:</strong> Binary verification of factual, structural, or representational conditions.</li>
-            <li><strong>What:</strong> Multiple-choice comprehension of scientific entities, relationships, or context.</li>
-            <li><strong>How:</strong> Quality judgment on completeness, clarity, and disciplinary conventions.</li>
-          </ul>
-          <p><em>Measures factual verification, semantic understanding, and scientific reasoning.</em></p>
-          <p><strong>Evaluation:</strong> Weighted accuracy:<br>
-            Score₁ = 0.2 × ACC<sub>yes/no</sub> + 0.3 × ACC<sub>what</sub> + 0.5 × ACC<sub>how</sub>
-          </p>
-        </div>
+  <p style="margin-bottom: 1.5rem; font-size: 1.05rem; padding: 0 1.5rem;">
+    The SIQA Challenge consists of two independent tracks. Participants can choose any one or both to compete in.
+  <strong>Each track will have its own set of awards.</strong>
+  </p>
 
-        <!-- Task 2: SIQA Scoring -->
-        <div class="track-card">
-          <h3>📈 SIQA Scoring (SIQA-S)</h3>
-          <p>
-            Predicts continuous quality scores along two complementary dimensions:
-          </p>
-          <ul style="padding-left: 1.2rem; margin: 0.5rem 0;">
-            <li><strong>Knowledge Driven:</strong> Alignment with ground-truth science (validity + completeness).</li>
-            <li><strong>Perception Driven:</strong> Human-expert judgments on clarity and discipline-specific usability (clarity + conformity).</li>
-          </ul>
-          <p><em>Models predict scores directly from images—no text input required.</em></p>
-          <p><strong>Evaluation:</strong> For each dimension <em>d</em> ∈ {Factual, Perceptual}:<br>
-            Score<sup>(d)</sup> = max( (SRCC<sup>(d)</sup> + PLCC<sup>(d)</sup>) / 2 , 0 ) × 100<br>
-            Final Score₂ = (Score<sup>Factual</sup> + Score<sup>Perceptual</sup>) / 2
-          </p>
-        </div>
-      </div>
-             <img src="./imgs/SpotLight.svg" alt="Task Example" style="display: block; margin: 1.5rem auto; width: 80%; height: auto; border-radius: 6px;">
-    </section>
+  <img src="./imgs/SpotLight.svg" alt="Task Example" style="display: block; margin: 1.5rem auto; width: 80%; height: auto; border-radius: 6px;">
 
-<section id="datavisual">
-  <h2>📊 Dataset Overview</h2>
+
+
+  <div style="
+    width: calc(100% + 3rem);
+    margin: 1.5rem -1.5rem;
+    padding: 1rem 2.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  ">
+    <h3 style="color: #2c3e50; margin-top: 0;">🔍 Challenge Track Details</h3>
+
+    <!-- Track 1: SIQA Understanding -->
+    <div style="margin: 1.5rem 0; padding-left: 1.5rem; position: relative;">
+      <div style="position: absolute; left: 0; top: 0; width: 12px; height: 100%; background-color: #3498db;"></div>
+      <h4 style="margin: 0 0 0.6rem 0; color: #3498db;">Track 1: SIQA Understanding (SIQA-U)</h4>
+      <p style="color: #555; margin: 0.5rem 0;">
+        Evaluates a model’s ability to reason about scientific image quality through structured visual question answering aligned with the four SIQA dimensions.
+      </p>
+      <p style="color: #555; margin: 0.5rem 0;"><strong>Question Types:</strong></p>
+      <ul style="padding-left: 1.2rem; margin: 0.5rem 0; color: #555;">
+        <li><strong>Yes/No:</strong> Binary verification of factual, structural, or representational conditions.</li>
+        <li><strong>What:</strong> Multiple-choice comprehension of scientific entities, relationships, or context.</li>
+        <li><strong>How:</strong> Quality judgment on completeness, clarity, and disciplinary conventions.</li>
+      </ul>
+      <p style="color: #555; margin: 0.5rem 0; font-style: italic;">
+        Measures factual verification, semantic understanding, and scientific reasoning.
+      </p>
+      <p style="color: #555; margin: 0.5rem 0;"><strong>Evaluation Metric:</strong><br>
+       Final Score₁ = 0.2 × ACC<sub>yes/no</sub> + 0.3 × ACC<sub>what</sub> + 0.5 × ACC<sub>how</sub>
+      </p>
+    </div>
+
+    <!-- Track 2: SIQA Scoring -->
+    <div style="margin: 1.5rem 0; padding-left: 1.5rem; position: relative;">
+      <div style="position: absolute; left: 0; top: 0; width: 12px; height: 100%; background-color: #e74c3c;"></div>
+      <h4 style="margin: 0 0 0.6rem 0; color: #e74c3c;">Track 2: SIQA Scoring (SIQA-S)</h4>
+      <p style="color: #555; margin: 0.5rem 0;">
+        Predicts continuous quality scores along two complementary dimensions:
+      </p>
+      <ul style="padding-left: 1.2rem; margin: 0.5rem 0; color: #555;">
+        <li><strong>Knowledge-Driven:</strong> Factual correctness (validity + completeness) — does the image convey accurate science?</li>
+        <li><strong>Perception-Driven:</strong> Human-expert judgments on clarity and discipline-specific usability (clarity + conformity).</li>
+      </ul>
+      <p style="color: #555; margin: 0.5rem 0; font-style: italic;">
+        Models predict scores directly from images—no text input required.
+      </p>
+      <p style="color: #555; margin: 0.5rem 0;"><strong>Evaluation Metric:</strong><br>
+        For each dimension <em>d</em> ∈ {Factual, Perceptual}:<br>
+        Score<sup>(d)</sup> = max( (SRCC<sup>(d)</sup> + PLCC<sup>(d)</sup>) / 2 , 0 ) × 100<br>
+        Final Score₂ = (Score<sup>Factual</sup> + Score<sup>Perceptual</sup>) / 2
+      </p>
+    </div>
+  </div>
+
 
   <div style="text-align: center; margin: 1rem 0;">
     <p style="color: #555; font-size: 1rem; max-width: 800px; margin: 0 auto 1.5rem; line-height: 1.6;">
-      The SIQA dataset is built around two complementary tasks:
-      <strong>SIQA-U</strong> for structured reasoning and <strong>SIQA-S</strong> for continuous quality scoring.
-      These are grounded in four scientific dimensions and two orthogonal evaluation axes.
+      The SIQA dataset is built around two complementary tracks:
+    <strong>SIQA-U</strong> for structured reasoning and <strong>SIQA-S</strong> for continuous quality scoring.
+    To help participants better understand the challenge design and data structure, we provide a visual overview of the dataset below.
     </p>
   </div>
 
@@ -283,38 +303,6 @@
   <img src="./imgs/DataVisual.svg" alt="SIQA Dataset Overview"
        style="display: block; margin: 0 auto 1.5rem; width: 90%; height: auto; border-radius: 6px;">
 
-  <!-- 分析说明 -->
-  <div style="max-width: 800px; margin: 0 auto; padding: 1rem; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-    <h3 style="color: #2c3e50; margin-top: 0;">🔍 Key Design Principles</h3>
-
-    <div style="margin: 1rem 0; padding-left: 1.5rem; position: relative;">
-      <div style="position: absolute; left: 0; top: 0; width: 12px; height: 100%; background-color: #3498db;"></div>
-      <h4 style="margin: 0 0 0.5rem 0; color: #3498db;">1. SIQA-U: 4 Dimensions × 3 Question Types</h4>
-      <p style="color: #555; margin: 0.5rem 0;">
-        Each image is evaluated through three question types across four scientific dimensions:
-      </p>
-      <ul style="padding-left: 1.2rem; margin: 0.5rem 0; color: #555;">
-        <li><strong>Yes/No:</strong> Binary verification of factual correctness (e.g., "Does this diagram show a correct bond?")</li>
-        <li><strong>What:</strong> Multiple-choice comprehension of scientific elements (e.g., "Which labeling violates convention?")</li>
-        <li><strong>How:</strong> Qualitative judgment on completeness, clarity, and disciplinary alignment.</li>
-      </ul>
-    </div>
-
-    <div style="margin: 1rem 0; padding-left: 1.5rem; position: relative;">
-      <div style="position: absolute; left: 0; top: 0; width: 12px; height: 100%; background-color: #e74c3c;"></div>
-      <h4 style="margin: 0 0 0.5rem 0; color: #e74c3c;">2. SIQA-S: Perception vs. Knowledge — Orthogonal Evaluation Axes</h4>
-      <p style="color: #555; margin: 0.5rem 0;">
-        SIQA-S scores images along two <em>orthogonal</em> dimensions:
-      </p>
-      <ul style="padding-left: 1.2rem; margin: 0.5rem 0; color: #555;">
-        <li><strong>Knowledge-Driven:</strong> Factual correctness (validity, completeness) — does the image convey accurate science?</li>
-        <li><strong>Perception-Driven:</strong> Cognitive clarity (clarity, conformity) — is it easy to understand and follow domain conventions?</li>
-      </ul>
-      <p style="color: #555; margin: 0.5rem 0; font-style: italic;">
-        This design enables models to be evaluated on both <em>what they know</em> and <em>how well they communicate it</em>.
-      </p>
-    </div>
-  </div>
 </section>
 
 
@@ -334,9 +322,12 @@
     <div class="timeline-item">
       <div class="timeline-date">March 10, 2026</div>
       <div>
-      Validation dataset released
-        <a href="https://huggingface.co/datasets/SIQA/ValidSet" target="_blank" rel="noopener">Huggingface Valid</a>,
-      Follow the official submission template <a href="https://github.com/SIQA-Competition/Evaluate-Pipeline" target="_blank" rel="noopener">github</a>.
+        Validation dataset released at
+        <a href="https://huggingface.co/datasets/SIQA/ValidSet" target="_blank" rel="noopener">Hugging Face ValidSet</a>.
+        You can submit your results following the
+        <a href="https://github.com/SIQA-Competition/Evaluate-Pipeline" target="_blank" rel="noopener">official submission template</a>.
+        Once submitted, your scores will be automatically updated on the public leaderboard.
+        If you prefer not to disclose your results, you may also use the evaluation code in the repository for local self-assessment.
       </div>
     </div>
     <div class="timeline-item">
@@ -348,16 +339,15 @@
     <div class="timeline-item">
       <div class="timeline-date">April 25, 2026</div>
       <div>
-          Code &amp; model submission deadline, submission your code at
+          Code &amp; model submission deadline if you want, submission your code at
           <a href="https://github.com/SIQA-Competition/" target="_blank" rel="noopener">github</a>;
-          Internal evaluation begins
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-date">May 4, 2026</div>
       <div>
           Paper submission deadline at <a href="liwenzhe@pjlab.org.cn" target="_blank" rel="noopener">official mail</a>.
-          The test dataset released at <a href="https://huggingface.co/datasets/SIQA/TestSet" target="_blank" rel="noopener"> Huggingface Test</a>,
+<!--          The test dataset released at <a href="https://huggingface.co/datasets/SIQA/TestSet" target="_blank" rel="noopener"> Huggingface Test</a>,-->
       </div>
     </div>
     <div class="timeline-item">
