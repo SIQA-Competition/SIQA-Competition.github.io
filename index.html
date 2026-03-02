@@ -173,6 +173,75 @@
       .organizers { gap: 1rem; }
       .org-item { max-width: 130px; }
     }
+ .iqab-table-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+  .iqab-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .iqab-table thead tr {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+  }
+  .iqab-table th {
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: 600;
+    color: #495057;
+    white-space: nowrap;
+  }
+  /* 第一列左对齐 */
+  .iqab-table th:first-child, .iqab-table td:first-child {
+    text-align: left;
+    min-width: 200px;
+  }
+  .iqab-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+  }
+  .iqab-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  .iqab-table tbody tr:hover {
+    background-color: #f1f3f5;
+  }
+  .iqab-table td {
+    padding: 12px 16px;
+    text-align: center;
+    color: #555;
+  }
+  /* 高亮最佳结果行 */
+  .iqab-table tr.highlight-row {
+    background-color: #e7f5ff;
+    font-weight: 600;
+    color: #1864ab;
+  }
+  .iqab-table tr.highlight-row td {
+    color: #1864ab;
+  }
+  .iqab-table tr.highlight-row:hover {
+    background-color: #d0ebff;
+  }
+  /* 表头子标题样式 */
+  .sub-header {
+    display: block;
+    font-size: 0.75rem;
+    color: #868e96;
+    font-weight: normal;
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
   </style>
 </head>
 <body>
@@ -235,7 +304,101 @@
 
   <img src="./imgs/SpotLight.svg" alt="Task Example" style="display: block; margin: 1.5rem auto; width: 80%; height: auto; border-radius: 6px;">
 
+<div class="iqab-table-container">
+  <table class="iqab-table">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>
+          Perception
+          <span class="sub-header">SRCC</span>
+        </th>
+        <th>
+          Perception
+          <span class="sub-header">PLCC</span>
+        </th>
+        <th>
+          Knowledge
+          <span class="sub-header">SRCC</span>
+        </th>
+        <th>
+          Knowledge
+          <span class="sub-header">PLCC</span>
+        </th>
+        <th>
+          Mean
+          <span class="sub-header">SRCC</span>
+        </th>
+        <th>
+          Mean
+          <span class="sub-header">PLCC</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>NIQE (zero-shot)</td>
+        <td>0.345</td>
+        <td>0.235</td>
+        <td>0.447</td>
+        <td>0.410</td>
+        <td>0.396</td>
+        <td>0.322</td>
+      </tr>
+      <tr>
+        <td>Q-Align (Zero-shot)</td>
+        <td>0.749</td>
+        <td>0.762</td>
+        <td>0.285</td>
+        <td>0.400</td>
+        <td>0.517</td>
+        <td>0.581</td>
+      </tr>
+      <tr>
+        <td>CLIP-IQA (Zero-shot)</td>
+        <td>0.496</td>
+        <td>0.520</td>
+        <td>0.362</td>
+        <td>0.435</td>
+        <td>0.429</td>
+        <td>0.478</td>
+      </tr>
+      <tr>
+        <td>CLIP-IQA+ (Trained)</td>
+        <td>0.724</td>
+        <td>0.676</td>
+        <td>0.862</td>
+        <td>0.801</td>
+        <td>0.793</td>
+        <td>0.741</td>
+      </tr>
+      <tr>
+        <td>HyperIQA (Trained)</td>
+        <td>0.773</td>
+        <td>0.783</td>
+        <td>0.897</td>
+        <td>0.895</td>
+        <td>0.835</td>
+        <td>0.839</td>
+      </tr>
+      <!-- 高亮行 -->
+      <tr class="highlight-row">
+        <td>InternVL3.5 (Fine-tuned)</td>
+        <td>0.857</td>
+        <td>0.881</td>
+        <td>0.915</td>
+        <td>0.937</td>
+        <td>0.886</td>
+        <td>0.909</td>
+      </tr>
+    </tbody>
+  </table>
 
+</div>
+
+  <p style="margin-bottom: 1.5rem; font-size: 1.05rem; padding: 0 1.5rem;">
+    <strong>Note:</strong> While MLLMs are not mandatory for this challenge, baseline experiments across diverse architectures show that fine-tuned MLLMs achieve superior performance on SIQA-S.
+  </p>
 
   <div style="
     width: calc(100% + 3rem);
